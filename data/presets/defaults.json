@@ -1,0 +1,46 @@
+{
+ "description": "Built-in defaults used when a preset omits a field. They mirror Airframe and Params in src/fpvcore/model.hpp; this file is informational and is not read at runtime. Units: cm, kg, deg, s.",
+ "airframe": {
+  "motor_kv": 1750,
+  "battery_cells": 6,
+  "prop_pitch_in": 4.3,
+  "mass_kg": 0.715,
+  "gravity": 9.82,
+  "linear_damping": 0.4,
+  "camera_tilt_deg": 25,
+  "lateral_grip": 0.8,
+  "air_speed_scale": 1.0,
+  "throttle_min": 5.5,
+  "throttle_low": 1.0,
+  "throttle_mid": 1.0,
+  "throttle_high": 1.0,
+  "prop_diameter_in": 5,
+  "power_response": 1.0,
+  "pid_wobble_mode": 0,
+  "pid_wobble_amount": 0,
+  "propwash_amount": 0,
+  "drag_coeff_front": 0.4,
+  "drag_coeff_top": 0.4,
+  "drag_coeff_side": 0.4,
+  "drag_coeff_diag": 0.4
+ },
+ "battery": {
+  "cells": 6,
+  "capacity_mah": 1400,
+  "discharge_c": 150,
+  "is_liion": false,
+  "internal_resistance_mohm_per_cell": 5
+ },
+ "physics": {
+  "max_dt_s": 0.03333,
+  "angular_damping_per_s": 6.5,
+  "max_angular_velocity_degs": 3000,
+  "restitution": 0.1,
+  "friction": 0.7,
+  "friction_static_ratio": 1.1,
+  "bounce_threshold_cms": 200,
+  "camera_uptilt_deg": 25,
+  "camera_fov_deg": 120,
+  "angle_mode_max_deg": 50
+ }
+}

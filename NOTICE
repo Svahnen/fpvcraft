@@ -1,0 +1,8 @@
+FPVcraft / fpv-core: code is MIT (LICENSE); bundled sounds are CC0 (adapters/minecraft-fabric/src/main/resources/assets/fpvcore/CREDITS.txt).
+
+Third-party components:
+  third_party/nlohmann/json.hpp   JSON for Modern C++ 3.11.3, MIT (third_party/nlohmann/LICENSE.MIT)
+  third_party/doctest/doctest.h   doctest, MIT (third_party/doctest/LICENSE.txt)
+  adapters/minecraft-fabric/gradle/wrapper, gradlew, gradlew.bat   Gradle wrapper, Apache License 2.0
+
+Minecraft is a trademark of Mojang AB. This project is not affiliated with or endorsed by Mojang or Microsoft.

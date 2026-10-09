@@ -1,0 +1,8 @@
+build/
+.gradle/
+build-native/
+run/
+run*/
+*.class
+.idea/
+tmp/

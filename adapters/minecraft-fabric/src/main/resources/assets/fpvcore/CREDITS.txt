@@ -1,0 +1,7 @@
+fpvcore sounds (assets/fpvcore/sounds/*.ogg, sounds.json)
+
+All sounds are synthesized from scratch by tools/audio/synth_drone.py from numeric parameters
+(additive/modal synthesis and shaped noise). No recorded, sampled or third-party audio is used or included.
+They are released under CC0 1.0 (public domain dedication); regenerate them any time with
+  python tools/audio/synth_drone.py
+No external audio assets are bundled.

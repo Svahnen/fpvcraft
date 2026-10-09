@@ -1,0 +1,10 @@
+{
+  "key.categories.fpvcore": "FPV Drone",
+  "key.fpvcore.fly": "Toggle FPV flight",
+  "key.fpvcore.spawn": "Place / reset drone at player",
+  "key.fpvcore.return": "Return drone to player",
+  "key.fpvcore.calibrate": "Calibrate controller",
+  "key.fpvcore.preset": "Next drone preset",
+  "key.fpvcore.arm": "Arm switch (keyboard)",
+  "key.fpvcore.mode": "Flight mode (keyboard)"
+}

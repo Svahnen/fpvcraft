@@ -1,0 +1,93 @@
+{
+  "wind_low": {
+    "sounds": [
+      {
+        "name": "fpvcore:wind_low",
+        "stream": false
+      }
+    ]
+  },
+  "wind_high": {
+    "sounds": [
+      {
+        "name": "fpvcore:wind_high",
+        "stream": false
+      }
+    ]
+  },
+  "flip": {
+    "sounds": [
+      {
+        "name": "fpvcore:flip",
+        "stream": false
+      }
+    ]
+  },
+  "crash": {
+    "sounds": [
+      "fpvcore:crash_1",
+      "fpvcore:crash_2",
+      "fpvcore:crash_3"
+    ]
+  },
+  "crash_big": {
+    "sounds": [
+      "fpvcore:crash_big_1",
+      "fpvcore:crash_big_2"
+    ]
+  },
+  "prop_strike": {
+    "sounds": [
+      "fpvcore:prop_strike_1",
+      "fpvcore:prop_strike_2"
+    ]
+  },
+  "motor_1": {
+    "sounds": [
+      {
+        "name": "fpvcore:motor_1",
+        "stream": false
+      }
+    ]
+  },
+  "motor_2": {
+    "sounds": [
+      {
+        "name": "fpvcore:motor_2",
+        "stream": false
+      }
+    ]
+  },
+  "motor_3": {
+    "sounds": [
+      {
+        "name": "fpvcore:motor_3",
+        "stream": false
+      }
+    ]
+  },
+  "motor_4": {
+    "sounds": [
+      {
+        "name": "fpvcore:motor_4",
+        "stream": false
+      }
+    ]
+  },
+  "motor_5": {
+    "sounds": [
+      {
+        "name": "fpvcore:motor_5",
+        "stream": false
+      }
+    ]
+  },
+  "motor_6": {
+    "sounds": [
+      {
+        "name": "fpvcore:motor_6",
+        "stream": false
+      }
+    ]
+  }
+}

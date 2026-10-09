@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "dev.fpvcore.mc.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "DemoMixin",
+    "DemoTimerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

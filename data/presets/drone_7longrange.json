@@ -1,0 +1,35 @@
+{
+ "name": "7in-longrange",
+ "description": "7-inch long-range quad: 2807 1400KV motors, 6S, 7x5 props, about 1.0 kg with a 3300 mAh pack.",
+ "airframe": {
+  "motor_kv": 1400,
+  "battery_cells": 6,
+  "prop_pitch_in": 5.0,
+  "mass_kg": 1.0,
+  "gravity": 9.82,
+  "linear_damping": 0.42,
+  "camera_tilt_deg": 20,
+  "lateral_grip": 0.25,
+  "air_speed_scale": 1.0,
+  "throttle_min": 5.5,
+  "throttle_low": 1.0,
+  "throttle_mid": 1.0,
+  "throttle_high": 1.0,
+  "prop_diameter_in": 7,
+  "power_response": 0.0,
+  "pid_wobble_mode": 3,
+  "pid_wobble_amount": 0.8,
+  "propwash_amount": 0.4,
+  "drag_coeff_front": 0.28,
+  "drag_coeff_top": 0.27,
+  "drag_coeff_side": 0.34,
+  "drag_coeff_diag": 0.28
+ },
+ "battery": {
+  "cells": 6,
+  "capacity_mah": 3300,
+  "discharge_c": 100,
+  "is_liion": false,
+  "internal_resistance_mohm_per_cell": 5
+ }
+}

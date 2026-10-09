@@ -1,0 +1,82 @@
+plugins {
+    id 'fabric-loom' version '1.11-SNAPSHOT'
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = 'dev.fpvcore'
+base { archivesName = 'fpvcraft' }
+
+repositories { mavenCentral() }
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    // JNA is already shipped with Minecraft (via oshi); used to bind the C ABI of libfpvcore without any JNI glue.
+}
+
+// Native libraries built from ../.. (see scripts/build-native.sh). Bundled under natives/<os>-<arch>/ and extracted at runtime.
+def nativeDir = file('build-native')
+sourceSets.main.resources.srcDir nativeDir
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand 'version': project.version }
+}
+
+tasks.withType(JavaCompile).configureEach { options.release = 21 }
+java { withSourcesJar() }
+
+def nativePath = file('build-native/natives/linux-x86_64/libfpvcore.so').absolutePath
+loom {
+    runs {
+        client {
+            // let the dev client find the natives without a bundled jar copy
+            if (System.getProperty('fpvcore.autotest')) property 'fpvcore.autotest', System.getProperty('fpvcore.autotest')
+            property 'fpvcore.native', System.getProperty('fpvcore.native') ?: nativePath
+            if (System.getProperty('fpvcore.cmdfile')) property 'fpvcore.cmdfile', System.getProperty('fpvcore.cmdfile')
+            if (System.getProperty('fpvcore.noservermod')) property 'fpvcore.noservermod', '1'
+            programArgs '--username', System.getProperty('fpvcore.user') ?: 'Player'
+            if (System.getProperty('fpvcore.connect')) programArgs '--quickPlayMultiplayer', System.getProperty('fpvcore.connect')
+            if (System.getProperty('fpvcore.size')) programArgs '--width', System.getProperty('fpvcore.size').split('x')[0], '--height', System.getProperty('fpvcore.size').split('x')[1]
+        }
+        // second dev client for multiplayer tests: ./gradlew runClient2 -Dfpvcore.user=Watcher -Dfpvcore.autotest=watch -Dfpvcore.connect=localhost:25565
+        client2 {
+            client()
+            name = 'Minecraft Client 2'
+            runDir = 'run2'
+            if (System.getProperty('fpvcore.autotest')) property 'fpvcore.autotest', System.getProperty('fpvcore.autotest')
+            property 'fpvcore.native', System.getProperty('fpvcore.native') ?: nativePath
+            programArgs '--username', System.getProperty('fpvcore.user') ?: 'Player2'
+            if (System.getProperty('fpvcore.connect')) programArgs '--quickPlayMultiplayer', System.getProperty('fpvcore.connect')
+            if (System.getProperty('fpvcore.size')) programArgs '--width', System.getProperty('fpvcore.size').split('x')[0], '--height', System.getProperty('fpvcore.size').split('x')[1]
+        }
+        // dev client in a scratch game dir with a copy of the user's world: ./gradlew runClient3 -Dfpvcore.rundir=/path/to/scratch -Dfpvcore.autotest=chunks -Dfpvcore.world="fpv test"
+        client3 {
+            client()
+            name = 'Minecraft Client 3'
+            runDir = System.getProperty('fpvcore.rundir') ?: 'run3'
+            if (System.getProperty('fpvcore.autotest')) property 'fpvcore.autotest', System.getProperty('fpvcore.autotest')
+            ['fpvcore.pitch', 'fpvcore.dist', 'fpvcore.views'].each { k -> if (System.getProperty(k)) property k, System.getProperty(k) }
+            property 'fpvcore.native', System.getProperty('fpvcore.native') ?: nativePath
+            programArgs '--username', System.getProperty('fpvcore.user') ?: 'logicalSwan'
+            if (System.getProperty('fpvcore.uuid')) programArgs '--uuid', System.getProperty('fpvcore.uuid')
+            if (System.getProperty('fpvcore.world')) programArgs '--quickPlaySingleplayer', System.getProperty('fpvcore.world')
+            if (System.getProperty('fpvcore.size')) programArgs '--width', System.getProperty('fpvcore.size').split('x')[0], '--height', System.getProperty('fpvcore.size').split('x')[1]
+        }
+        server {
+            server()
+            runDir = System.getProperty('fpvcore.serverdir') ?: 'run-server'
+            if (System.getProperty('fpvcore.crashtest')) property 'fpvcore.crashtest', '1'
+            if (System.getProperty('fpvcore.qalog')) property 'fpvcore.qalog', '1'
+        }
+    }
+    // forward the dev/QA switches (-Dfpvcore.cmdfile=..., -Dfpvcore.forcewater=1 ...) to every client run
+    runs.configureEach { r ->
+        if (r.name.startsWith('client')) {
+            System.properties.each { k, v -> if (k.toString().startsWith('fpvcore.') && !(k.toString() in ['fpvcore.native', 'fpvcore.user', 'fpvcore.connect', 'fpvcore.size'])) r.property k.toString(), v.toString() }
+        }
+    }
+}

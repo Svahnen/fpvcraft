@@ -1,0 +1,35 @@
+{
+ "name": "3in-micro",
+ "description": "3-inch micro quad: 1404 4200KV motors, 3S, 3x2.2 props, about 105 g with a 450 mAh pack.",
+ "airframe": {
+  "motor_kv": 4200,
+  "battery_cells": 3,
+  "prop_pitch_in": 2.2,
+  "mass_kg": 0.105,
+  "gravity": 9.82,
+  "linear_damping": 0.38,
+  "camera_tilt_deg": 25,
+  "lateral_grip": 0.4,
+  "air_speed_scale": 1.0,
+  "throttle_min": 5.5,
+  "throttle_low": 1.0,
+  "throttle_mid": 1.0,
+  "throttle_high": 1.0,
+  "prop_diameter_in": 3,
+  "power_response": 0.4,
+  "pid_wobble_mode": 2,
+  "pid_wobble_amount": 0.6,
+  "propwash_amount": 1.0,
+  "drag_coeff_front": 0.5,
+  "drag_coeff_top": 0.29,
+  "drag_coeff_side": 0.47,
+  "drag_coeff_diag": 0.42
+ },
+ "battery": {
+  "cells": 3,
+  "capacity_mah": 450,
+  "discharge_c": 80,
+  "is_liion": false,
+  "internal_resistance_mohm_per_cell": 6
+ }
+}

@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "package": "dev.fpvcore.mc.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "CameraMixin",
+    "GameRendererMixin",
+    "KeyboardInputMixin",
+    "MouseHandlerMixin",
+    "EntityRenderDispatcherMixin",
+    "MinecraftMixin",
+    "GuiMixin",
+    "BossHealthOverlayMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "ServerGamePacketListenerImplMixin",
+    "ServerPlayerMixin",
+    "LivingEntityMixin",
+    "EntityMixin",
+    "PlayerMixin",
+    "ExperienceOrbMixin"
+  ]
+}

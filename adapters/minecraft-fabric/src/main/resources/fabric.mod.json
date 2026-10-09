@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "fpvcore",
+  "version": "${version}",
+  "name": "FPVcraft",
+  "description": "Fly an FPV quadcopter in Minecraft with a physically based flight model (fpvcore) and a real RC controller.",
+  "authors": [
+    "FPVcraft contributors"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.fpvcore.mc.FpvMod"
+    ],
+    "client": [
+      "dev.fpvcore.mc.FpvClient"
+    ]
+  },
+  "mixins": [
+    "fpvcore.mixins.json",
+    {
+      "config": "fpvcore-demo.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

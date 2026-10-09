@@ -1,0 +1,35 @@
+{
+ "name": "5in-freestyle",
+ "description": "5-inch freestyle quad: 2207 1700KV motors, 6S, 5.1x4.3 tri-blade props, about 680 g with a 1300 mAh pack.",
+ "airframe": {
+  "motor_kv": 1700,
+  "battery_cells": 6,
+  "prop_pitch_in": 4.3,
+  "mass_kg": 0.68,
+  "gravity": 9.82,
+  "linear_damping": 0.4,
+  "camera_tilt_deg": 25,
+  "lateral_grip": 0.4,
+  "air_speed_scale": 1.0,
+  "throttle_min": 5.5,
+  "throttle_low": 1.0,
+  "throttle_mid": 1.0,
+  "throttle_high": 1.0,
+  "prop_diameter_in": 5,
+  "power_response": 0.45,
+  "pid_wobble_mode": 0,
+  "pid_wobble_amount": 0,
+  "propwash_amount": 0,
+  "drag_coeff_front": 0.42,
+  "drag_coeff_top": 0.38,
+  "drag_coeff_side": 0.38,
+  "drag_coeff_diag": 0.38
+ },
+ "battery": {
+  "cells": 6,
+  "capacity_mah": 1300,
+  "discharge_c": 150,
+  "is_liion": false,
+  "internal_resistance_mohm_per_cell": 5
+ }
+}
